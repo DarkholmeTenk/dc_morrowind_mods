@@ -7,7 +7,7 @@ config.load()
 
 local function increaseGold(o, ref)
     local moreBarterMul = config.getBarterMul()
-    if(o.barterGold == nil) then
+    if(o.barterGold == nil or o.barterGold == 0) then
         return
     end
     if(ref.data["moreBarter"] ~= nil and ref.data["moreBarter"]["mul"] == moreBarterMul) then
