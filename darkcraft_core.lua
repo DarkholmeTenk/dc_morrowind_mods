@@ -1,16 +1,9 @@
 local darkcraft = {}
 
-darkcraft.debug = function(o)
-    local t = type(o)
-    if(t == "table") then
-        for i,v in pairs(o) do
-            mwse.log(i .. " - " .. type(v))
-        end
-    elseif(t == "userdata") then
-        for i,v in pairs(getmetatable(o)) do
-            mwse.log(i .. " - " .. type(v))
-        end
-    end
+local debug = require("darkcraft/core/debug")
+
+darkcraft.debug = function(o, name)
+    debug(o, name)
 end
 
 darkcraft.saveConfig = function(filename, config)
