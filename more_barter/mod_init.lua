@@ -29,26 +29,6 @@ local function increaseGold(o, ref)
     o.barterGold = newBarter
 end
 
-local function setServices(instance, baseObject)
-    local addiction = tes3.getObject("emb_memitem_addicted")
-    if(addiction == nil) then
-        return
-    end
-
-    local inventory = instance.inventory
-    for stack in tes3.iterate(inventory.iterator) do
-        local item = stack.object
-        if(item.id == "emb_memitem_addicted" or item.id == "emb_memitem_mychilde" or item.id == "emb_memitem_myvictim" or item.id == "emb_memitem_mythrall") then
-            mwse.log("THRALL!")
-            if(baseObject.aiConfig ~= nil) then
-                if(baseObject.aiConfig.merchantFlags ~= nil and baseObject.aiConfig.merchantFlags > 0) then
-                    baseObject.aiConfig.merchantFlags = 262143
-                end
-            end
-        end
-    end
-end
-
 local function onActivate(e)
     if(e.activator~= tes3.player) then
         return
@@ -60,8 +40,7 @@ local function onActivate(e)
     local o = e.target.object
     if(o.objectType == tes3.objectType.npc) then
         if(o.baseObject ~= nil) then
-            increaseGold(o.baseObject, e.target) 
-            --setServices(o, o.baseObject)
+            increaseGold(o.baseObject, e.target)
         end
     end
 end

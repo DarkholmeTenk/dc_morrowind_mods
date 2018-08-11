@@ -3,7 +3,7 @@ local core = require("darkcraft/darkcraft_core")
 local saveFile = "moreBarter"
 
 local data = {
-    barterMul = 3
+    barterMul = 1
 }
 
 local config = {}
