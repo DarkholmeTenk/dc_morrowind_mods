@@ -4,9 +4,11 @@ local configUI = require("darkcraft/spellcaster/config_ui")
 
 local function spellcast(e)
     darkcraft.debug(e, "spellcast event")
-    mwse.log("" .. e.source.magickaCost)
     local skillID = tes3.magicSchoolSkill[e.expGainSchool]
     local skillIncrease = config.getSkillIncrease(skillID, e.source.magickaCost)
+    if(config.logging()) then
+        mwse.log("DC-SE:" .. e.source.magickaCost .. " to " .. skillIncrease)
+    end
     if(skillIncrease > 0) then
         tes3.getMobilePlayer():exerciseSkill(skillID, skillIncrease)
     end

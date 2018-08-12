@@ -35,6 +35,9 @@ local function buildTotalStack(container, config)
     for i,v in pairs(skills) do
         uiArr[i] = buildSkillStack(container, data[i], v)
     end
+    local logging = darkcraft.ui.buildToggleButton(container, {label = "Enable detailed logging", current=data.logging})
+    uiArr["logging"] = logging.getValue
+
     return function()
         local newData = {}
         for i,v in pairs(uiArr) do

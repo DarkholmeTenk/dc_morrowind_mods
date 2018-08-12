@@ -40,7 +40,8 @@ local defaultData = {
         const = 0,
         linear = 1,
         sqr = 0
-    }
+    },
+    logging = false
 }
 
 local configObj = darkcraft.getMod("spellcaster"):getConfig()
@@ -59,6 +60,10 @@ end
 
 config.shouldDisable = function(skill)
     return data[skill].disable
+end
+
+config.logging = function()
+    return data[logging]
 end
 
 config.getSkillIncrease = function(skill, cost)
