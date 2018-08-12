@@ -1,6 +1,6 @@
 {
     "name": "Darkcraft Core",
-    "version": 0.1,
+    "version": "0.1",
     "desc": "This mod acts as a core mod and provides functionality to my other mods",
     "deps": []
 }
