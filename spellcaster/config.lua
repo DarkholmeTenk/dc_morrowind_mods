@@ -61,15 +61,15 @@ config.setData = function(newData)
 end
 
 config.shouldDisable = function(skill)
-    return data[skill+1].disable
+    return data.skills[skill+1].disable
 end
 
 config.logging = function()
-    return data[logging]
+    return data.logging
 end
 
 config.getSkillIncrease = function(skill, cost)
-    local d = data[skill+1]
+    local d = data.skills[skill+1]
     return (math.sqrt(cost) * d.sqrt) + (d.const) + (d.linear * cost) + (d.sqr * cost * cost)
 end
 

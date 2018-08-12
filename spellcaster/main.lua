@@ -4,14 +4,14 @@ local magicSchoolSkill = require("tes3.magicSchoolSkill")
 
 local function spellcast(e)
     local skillID = magicSchoolSkill[e.expGainSchool]
-    local skillIncrease = config.getSkillIncrease(skillID, e.source.magickaCost)
+    local skillIncrease = config.getSkillIncrease(e.expGainSchool, e.source.magickaCost)
     if(config.logging()) then
         mwse.log("DC-SE:" .. e.source.magickaCost .. " to " .. skillIncrease)
     end
     if(skillIncrease > 0) then
         tes3.getMobilePlayer():exerciseSkill(skillID, skillIncrease)
     end
-    if(config.shouldDisable(skillID)) then
+    if(config.shouldDisable(e.expGainSchool)) then
         e.expGainSchool = nil
     end
 end
