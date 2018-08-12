@@ -49,11 +49,13 @@ end
 ui.buildSlider = function(container, data)
     local step = data.step or 1
     local jump = data.jump or 5
-    local min = data.min or 0
+    local min = data.min
     local max = data.max or 100
-    local current = data.current or 0
+    local current = data.current
     local format = data.format or "Current: %.1f"
     local onChange = data.onChange
+    if(min == nil) then min = 0 end
+    if(current == nil) then current = 0 end
 
     local c2 = container:createBlock()
     c2.flowDirection = "left_to_right"

@@ -5,13 +5,21 @@ local function copyInto(original, new)
         for i,v in pairs(original) do
             local newV = new[i]
             if(type(v) == "table") then
+                mwse.log("Copying in to " .. i)
                 copyInto(v, newV)
             else
                 if(type(v) == type(newV)) then
-                    original[i] = newV
+                    if(v ~= newV) then
+                        mwse.log("Updating " .. i)
+                        original[i] = newV
+                    end
+                else
+                    mwse.log(i .. " wrong type " .. type(v) .. " != " .. type(newV))
                 end
             end
         end
+    else
+        mwse.log("Can't copy into " .. type(original) .. " from " .. type(new))
     end
 end
 
@@ -35,6 +43,7 @@ config.get = function(modName)
     c.load = function(rc, defaultData)
         local data = defaultData
         local newConfig = loadConfig(rc.modName)
+        mwse.log("Loaded " .. json.encode(newConfig))
         if(newConfig == nil) then
             rc:save()
         else

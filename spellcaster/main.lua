@@ -1,10 +1,9 @@
 local config = require("darkcraft/spellcaster/config")
 local configUI = require("darkcraft/spellcaster/config_ui")
-
+local magicSchoolSkill = require("tes3.magicSchoolSkill")
 
 local function spellcast(e)
-    darkcraft.debug(e, "spellcast event")
-    local skillID = tes3.magicSchoolSkill[e.expGainSchool]
+    local skillID = magicSchoolSkill[e.expGainSchool]
     local skillIncrease = config.getSkillIncrease(skillID, e.source.magickaCost)
     if(config.logging()) then
         mwse.log("DC-SE:" .. e.source.magickaCost .. " to " .. skillIncrease)

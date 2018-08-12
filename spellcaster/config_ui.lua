@@ -1,4 +1,4 @@
-local skills = { [0] = "Alteration", "Conjuration", "Destruction", "Illusion", "Mysticism", "Restoration" }
+local skills = { "Alteration", "Conjuration", "Destruction", "Illusion", "Mysticism", "Restoration" }
 
 local ui = {}
 
@@ -21,7 +21,7 @@ local function buildSkillStack(container, config, label)
     return function()
         return {
             disable = disable.getValue(),
-            sqrt = disable.getValue(),
+            sqrt = sqrt.getValue(),
             const = const.getValue(),
             linear = lin.getValue(),
             sqr = sqr.getValue()
@@ -31,17 +31,19 @@ end
 
 local function buildTotalStack(container, config)
     local data = config.getData()
-    local uiArr = {}
+    local uiSkills = {}
     for i,v in pairs(skills) do
-        uiArr[i] = buildSkillStack(container, data[i], v)
+        uiSkills[i] = buildSkillStack(container, data.skills[i], v)
     end
     local logging = darkcraft.ui.buildToggleButton(container, {label = "Enable detailed logging", current=data.logging})
-    uiArr["logging"] = logging.getValue
 
     return function()
-        local newData = {}
-        for i,v in pairs(uiArr) do
-            newData[i] = v()
+        local newData = {
+            logging = logging.getValue(),
+            skills = {}
+        }
+        for i,v in pairs(uiSkills) do
+            newData.skills[i] = v()
         end
         config.setData(newData)
     end

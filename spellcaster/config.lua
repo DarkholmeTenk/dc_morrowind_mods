@@ -1,45 +1,47 @@
 local defaultData = {
-    [0] = {
-        disable = false,
-        sqrt = 0,
-        const = 0,
-        linear = 1,
-        sqr = 0
-    },
-    {
-        disable = false,
-        sqrt = 0,
-        const = 0,
-        linear = 1,
-        sqr = 0
-    },
-    {
-        disable = false,
-        sqrt = 0,
-        const = 0,
-        linear = 1,
-        sqr = 0
-    },
-    {
-        disable = false,
-        sqrt = 0,
-        const = 0,
-        linear = 1,
-        sqr = 0
-    },
-    {
-        disable = false,
-        sqrt = 0,
-        const = 0,
-        linear = 1,
-        sqr = 0
-    },
-    {
-        disable = false,
-        sqrt = 0,
-        const = 0,
-        linear = 1,
-        sqr = 0
+    skills={
+        {
+            disable = false,
+            sqrt = 0,
+            const = 0,
+            linear = 1,
+            sqr = 0
+        },
+        {
+            disable = false,
+            sqrt = 0,
+            const = 0,
+            linear = 1,
+            sqr = 0
+        },
+        {
+            disable = false,
+            sqrt = 0,
+            const = 0,
+            linear = 1,
+            sqr = 0
+        },
+        {
+            disable = false,
+            sqrt = 0,
+            const = 0,
+            linear = 1,
+            sqr = 0
+        },
+        {
+            disable = false,
+            sqrt = 0,
+            const = 0,
+            linear = 1,
+            sqr = 0
+        },
+        {
+            disable = false,
+            sqrt = 0,
+            const = 0,
+            linear = 1,
+            sqr = 0
+        }
     },
     logging = false
 }
@@ -59,7 +61,7 @@ config.setData = function(newData)
 end
 
 config.shouldDisable = function(skill)
-    return data[skill].disable
+    return data[skill+1].disable
 end
 
 config.logging = function()
@@ -67,7 +69,7 @@ config.logging = function()
 end
 
 config.getSkillIncrease = function(skill, cost)
-    local d = data[skill]
+    local d = data[skill+1]
     return (math.sqrt(cost) * d.sqrt) + (d.const) + (d.linear * cost) + (d.sqr * cost * cost)
 end
 
