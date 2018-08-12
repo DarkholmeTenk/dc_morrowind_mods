@@ -70,6 +70,10 @@ end
 
 config.getSkillIncrease = function(skill, cost)
     local d = data.skills[skill+1]
+    if(d == nil) then
+        mwse.log("Skill not found " .. skill)
+        return 0
+    end
     return (math.sqrt(cost) * d.sqrt) + (d.const) + (d.linear * cost) + (d.sqr * cost * cost)
 end
 

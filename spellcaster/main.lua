@@ -3,6 +3,9 @@ local configUI = require("darkcraft/spellcaster/config_ui")
 local magicSchoolSkill = require("tes3.magicSchoolSkill")
 
 local function spellcast(e)
+    if(e.expGainSchool == 6) then
+        return
+    end
     local skillID = magicSchoolSkill[e.expGainSchool]
     local skillIncrease = config.getSkillIncrease(e.expGainSchool, e.source.magickaCost)
     if(config.logging()) then
