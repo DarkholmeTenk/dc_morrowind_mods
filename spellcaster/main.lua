@@ -6,6 +6,9 @@ local function spellcast(e)
     if(e.expGainSchool == 6) then
         return
     end
+    if(e.caster ~= tes3.getPlayerRef()) then
+        return
+    end
     local skillID = magicSchoolSkill[e.expGainSchool]
     local skillIncrease = config.getSkillIncrease(e.expGainSchool, e.source.magickaCost)
     if(config.logging()) then
@@ -18,7 +21,7 @@ local function spellcast(e)
         e.expGainSchool = nil
     end
 end
-event.register("spellCasted", spellcast, {filter=tes3.getPlayerRef()})
+event.register("spellCasted", spellcast)
 
 local function registerModConfig(e)
     mwse.registerModConfig("DC - Spellcaster Exp", configUI.getPackage(config))

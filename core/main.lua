@@ -11,3 +11,5 @@ dc.getMod = mod
 dc.ui = ui
 
 _G.darkcraft = dc
+
+return dc

@@ -95,4 +95,6 @@ ui.buildSlider = function(container, data)
     return ret
 end
 
+ui.createSlider = ui.buildSlider
+
 return ui

@@ -3,5 +3,6 @@
     "version": "0.15",
     "desc": "This mod allows you to configure the amount of barter gold that merchants have",
     "installDir":"mods/darkcraft/more_barter",
+    "category": "gameplay",
     "deps": ["Darkcraft Core"]
 }
